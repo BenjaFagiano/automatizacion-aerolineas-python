@@ -1,4 +1,5 @@
 Origen;Origen_buscado;Destino;Destino_buscado;Url
-Buenos Aires;EZE;Madrid;MAD;https://www.aerolineas.com.ar/
-Córdoba;COR;Miami;MIA;https://www.aerolineas.com.ar/
-Buenos Aires;AEP;Roma;ROM;https://www.aerolineas.com.ar/
+Buenos Aires;EZE;Rio de Janeiro;RIO;https://www.aerolineas.com.ar/
+Córdoba;COR;Rio de Janeiro;RIO;https://www.aerolineas.com.ar/
+Buenos Aires;AEP;Rio de Janeiro;GIG;https://www.aerolineas.com.ar/
+Buenos Aires;EZE;Rio de Janeiro;SDU;https://www.aerolineas.com.ar/

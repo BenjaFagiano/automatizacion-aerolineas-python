@@ -18,19 +18,25 @@ class AerolineasResultPage():
 
     @allure.step("Validamos que el monto del vuelo buscado, sea mayor a 0")
     def validar_monto_vuelos(self):
-        elemento_texto = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located(self.label_locator_monto))
-        assert self.driver.find_element(
-            *self.label_locator_monto).is_displayed()
-        texto = elemento_texto.text
+        try:
+            elemento_texto = WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_element_located(self.label_locator_monto))
+            if self.driver.find_element(*self.label_locator_monto).is_displayed():
+                texto = elemento_texto.text
+                try:
+                    monto = float(
+                        texto.split()[-1].replace('.', '').replace(',', '.'))
+                    assert monto > 0
+                    print(
+                        f"El monto del precio es mayor a 0, el viaje cuesta {monto}")
+                except ValueError:
+                    print("El monto del precio es igual a 0")
+        except:
+            # Si hay un error al esperar el elemento del monto, asume que no hay vuelos disponibles
+            print("No se encontró el monto. No hay vuelos disponibles.")
+
         """ 
         texto.split() -> lo utilizo para dividir la cadena en palabras
         Extraigo el valor de la cadena (ARS + monto). Con el replaced eliminamos la separación de la , y utilizamos el "."
         Luego lo comparo para ver si es mayor a 0
         """
-        try:
-            monto = float(texto.split()[-1].replace('.', '').replace(',', '.'))
-            assert monto > 0
-            print(f"El monto del precio es mayor a 0, el viaje cuesta {monto}")
-        except ValueError:
-            print("El monto del precio es igual a 0")

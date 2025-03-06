@@ -85,3 +85,14 @@ def fecha_regreso():
     hoy = datetime.now()
     fecha = hoy + relativedelta(months=1) + timedelta(days=7)
     return fecha.strftime('%d/%m/%Y')
+
+@pytest.fixture
+def fecha_salida_br():
+    fecha = datetime(2025,5,5)
+    return fecha.strftime('%d/%m/%Y')
+
+
+@pytest.fixture
+def fecha_regreso_br():
+    fecha = datetime(2025, 5, 5) + relativedelta(days=7)
+    return fecha.strftime('%d/%m/%Y')
